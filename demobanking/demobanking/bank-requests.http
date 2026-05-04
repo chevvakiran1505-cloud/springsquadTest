@@ -1,0 +1,96 @@
+### Health endpoint -- no token required, should return 200.
+GET http://localhost:8081/health
+
+###
+
+### GET accounts with no token -- should return 401.
+GET http://localhost:8081/api/v1/accounts
+
+###
+
+### GET accounts with the read-only token -- should return 200.
+GET http://localhost:8081/api/v1/accounts
+Authorization: Bearer <read-only-token>
+
+###
+
+### GET accounts with the full-access token -- should return 200.
+GET http://localhost:8081/api/v1/accounts
+Authorization: Bearer <full-access-token>
+
+###
+
+### GET users with the read-only token -- should return 403.
+### The read-only token has no admin:users scope.
+GET http://localhost:8081/api/v1/users
+Authorization: Bearer <read-only-token>
+
+###
+
+### GET users with the full-access token -- should return 200.
+GET http://localhost:8081/api/v1/users
+Authorization: Bearer <full-access-token>
+
+### POST an invalid account -- should return 400.
+### Observe the default Spring error body before adding @ControllerAdvice.
+POST http://localhost:8081/api/v1/accounts
+Authorization: Bearer <full-access-token>
+Content-Type: application/json
+
+{
+  "ownerId": "",
+  "accountType": "MORTGAGE",
+  "initialDeposit": -500,
+  "description": ""
+}
+
+### POST invalid account -- should now return a controlled 400 body.
+POST http://localhost:8081/api/v1/accounts
+Authorization: Bearer <full-access-token>
+Content-Type: application/json
+
+{
+  "ownerId": "",
+  "accountType": "MORTGAGE",
+  "initialDeposit": -500
+}
+
+###
+
+### POST invalid transaction -- observe multiple field errors in one response.
+POST http://localhost:8081/api/v1/transactions
+Authorization: Bearer <full-access-token>
+Content-Type: application/json
+
+{
+  "accountId": "",
+  "type": "WIRE",
+  "amount": 0,
+  "reference": "X"
+}
+
+###
+
+### GET users with read-only token -- should return the controlled 403 body.
+GET http://localhost:8081/api/v1/users
+Authorization: Bearer <read-only-token>
+
+###
+
+### GET accounts with no token -- should return the controlled 401 body.
+GET http://localhost:8081/api/v1/accounts
+### GET a single account with the read-only token.
+### The Client Credentials token sub is "bank-client-read", not "user-1".
+### The @PostAuthorize expression checks returnObject.get().ownerId() == authentication.name
+### so this request should return 403 because "bank-client-read" != "user-1".
+GET http://localhost:8081/api/v1/accounts/ACC-001
+Authorization: Bearer <read-only-token>
+
+###
+
+### GET the same account with the full-access token.
+### The full-access token sub is "bank-client-full", but the token holds SCOPE_admin:users.
+### The @PostAuthorize expression grants access when hasAuthority('SCOPE_admin:users') is true,
+### so this request should return 200.
+GET http://localhost:8081/api/v1/accounts/ACC-001
+Authorization: Bearer <full-access-token>
