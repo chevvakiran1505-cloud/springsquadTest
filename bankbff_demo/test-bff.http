@@ -1,0 +1,106 @@
+### Banking BFF -- request examples
+
+@bff = http://localhost:8080
+@authServer = http://localhost:9000
+@resourceServer = http://localhost:8081
+
+###############################################################################
+### 1. Verify the BFF is running and rejecting unauthenticated calls.
+### Should return 401 Unauthorized.
+###############################################################################
+
+### Unauthenticated /api/me -- expect 401
+GET {{bff}}/api/me
+Accept: application/json
+
+### Unauthenticated /api/accounts -- expect 401
+GET {{bff}}/api/accounts
+Accept: application/json
+
+
+###############################################################################
+### 2. Log in via a browser, then paste the JSESSIONID cookie value below.
+###
+### To get the cookie:
+###   - Open http://localhost:8080/oauth2/authorization/bank-auth in a browser.
+###   - Log in as alice / password.
+###   - Open DevTools, go to Application > Cookies > localhost.
+###   - Copy the JSESSIONID value.
+###############################################################################
+
+@sessionCookie = BFF_SESSION=609CAB50F285180EA7ED7AF697F39332
+
+
+###############################################################################
+### 3. Authenticated requests
+###############################################################################
+
+### /api/me -- expect 200 with user info
+GET {{bff}}/api/me
+Accept: application/json
+Cookie: {{sessionCookie}}
+
+### /api/accounts -- expect 200 with the account list
+GET {{bff}}/api/accounts
+Accept: application/json
+Cookie: {{sessionCookie}}
+
+### /api/transfers -- expect 200 with a transaction ID
+POST {{bff}}/api/transfers
+Accept: application/json
+Cookie: {{sessionCookie}}
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "ACC-001",
+  "toAccountNumber": "ACC-002",
+  "amount": 100.00
+}
+
+### /api/accounts again -- ACC-001 balance should be lower
+GET {{bff}}/api/accounts
+Accept: application/json
+Cookie: {{sessionCookie}}
+
+
+###############################################################################
+### 4. Logout and verify the session is gone.
+###############################################################################
+
+### POST /logout -- expect 200 (or 204 No Content)
+POST {{bff}}/logout
+Accept: application/json
+Cookie: {{sessionCookie}}
+
+### /api/me after logout -- expect 401
+GET {{bff}}/api/me
+Accept: application/json
+Cookie: {{sessionCookie}}
+
+
+### Try a transfer without a CSRF token. Should fail with 403.
+# @no-cookie-jar
+POST http://localhost:8080/api/transfers
+Accept: application/json
+Content-Type: application/json
+Cookie: BFF_SESSION=AB2F10E885A0474A83ABE690A2373F15
+
+{
+  "fromAccountNumber": "ACC-001",
+  "toAccountNumber": "ACC-002",
+  "amount": 25.00
+}
+
+### Try a transfer WITH a CSRF token. Should succeed.
+# @no-cookie-jar
+POST http://localhost:8080/api/transfers
+Accept: application/json
+Content-Type: application/json
+Cookie: BFF_SESSION=AB2F10E885A0474A83ABE690A2373F15; XSRF-TOKEN=PASTE_XSRF_TOKEN_HERE
+X-XSRF-TOKEN: PASTE_THE_SAME_XSRF_TOKEN_VALUE
+
+{
+  "fromAccountNumber": "ACC-001",
+  "toAccountNumber": "ACC-002",
+  "amount": 25.00
+}

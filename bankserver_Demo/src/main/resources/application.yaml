@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: bankserver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: labuser
+    password: labpass123
+    driver-class-name: oracle.jdbc.OracleDriver
+
+client:
+  payment:
+    base-url: http://localhost:8085
+    api-key: test-key
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.jdbc.core: DEBUG
