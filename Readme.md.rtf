@@ -1,0 +1,510 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Environment Setup & Startup Guide\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Environment Prerequisites\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Tool\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Required Version\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 JDK\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 17\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Maven\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 3.9+\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Node.js\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 18+\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Oracle XE\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 21c\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Apache Kafka\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 4.x (KRaft mode)\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Docker/Desktop (optional)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Latest stable\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Required Environment Variables\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Use the provided {\f1 .env.example} as the source of truth.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Typical variables you must configure include:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Variable\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Purpose\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 JAVA_HOME\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 JDK 17 installation path\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 MAVEN_HOME\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Maven installation path\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 ORACLE_HOST\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Oracle hostname\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 ORACLE_PORT\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Oracle listener port\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 ORACLE_SERVICE\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Usually XEPDB1\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 ORACLE_USER\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 bankapp\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 ORACLE_PASSWORD\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Database password\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 KAFKA_BOOTSTRAP_SERVERS\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Usually localhost:9092\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 OIDC_ISSUER_URI\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Mock auth issuer URL\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 BFF_PORT\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Backend-for-frontend port\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 RESOURCE_SERVER_PORT\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Resource server port\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 FRONTEND_PORT\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Vite frontend port\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Copy and customize:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 cp .env.example .env\par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Exact Service Startup Order\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab mock-auth\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab resource-server\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab bff\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab frontend\sa180\par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Service Ports\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Service\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Port\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Mock Auth\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 9000\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 BFF\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 8080\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Resource Server\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 8081\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Frontend (Vite)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 5173\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Kafka\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 9092\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Oracle XE (Docker)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 1521\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Oracle XE (Standalone)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 1522\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 WireMock (optional)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 8089\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Starting the Services\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Mock Auth\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 cd mock-auth\line
+mvn spring-boot:run\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Resource Server\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 cd resource-server\line
+mvn spring-boot:run\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 BFF\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 cd bff\line
+mvn spring-boot:run\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Frontend\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 cd frontend\line
+npm install\line
+npm run dev\par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Running Tests\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Backend Tests\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 mvn test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Frontend Tests\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 npm test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 or\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 npm run test\par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Demo Credentials\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Role\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Username\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Password\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Standard User\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 alice\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Password\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 password\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Admin User\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 admin\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Password\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 password\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Smoke Test Checklist\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Endpoint\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Expected\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 GET http://localhost:9000/.well-known/openid-configuration\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 200\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 GET http://localhost:8081/health\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 200 \{\u8220"status\u8221":\u8220"UP\u8221"\}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 GET http://localhost:8080/health\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 200\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 GET http://localhost:8081/api/v1/accounts\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 401\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 GET http://localhost:8080/api/v1/accounts\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 401 or redirect\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 http://localhost:5173\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 SPA loads\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+}
