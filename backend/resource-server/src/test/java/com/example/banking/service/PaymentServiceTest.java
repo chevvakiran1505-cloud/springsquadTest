@@ -95,42 +95,26 @@ class PaymentServiceTest {
 
     @Test
     void submit_external_transfer_calls_processor_with_idempotency_header() {
-        /*
-         * TODO (Chapter 06 Part 2 — Step 1): Verify that the idempotency key is forwarded
-         * to the payment processor in the X-Idempotency-Key request header.
-         *
-         * Setup:
-         *   ArgumentCaptor<HttpEntity<Object>> captor = ArgumentCaptor.forClass((Class) HttpEntity.class);
-         *   stub http.exchange("/payments", POST, captor.capture(), String.class) to return 200 OK
-         *
-         * Exercise:
-         *   svc.submitExternalTransfer("acc_1", "ext_acc", new BigDecimal("50.00"), "USD", "idem-key-1");
-         *
-         * Verify:
-         *   assertThat(captor.getValue().getHeaders().getFirst("X-Idempotency-Key"))
-         *       .isEqualTo("idem-key-1");
-         */
-        // TODO: implement this test
-        throw new UnsupportedOperationException("test not yet implemented");
+        ArgumentCaptor<HttpEntity<Object>> captor = ArgumentCaptor.forClass((Class) HttpEntity.class);
+        when(http.exchange(eq("/payments"), eq(HttpMethod.POST), captor.capture(), eq(String.class)))
+                .thenReturn(org.springframework.http.ResponseEntity.ok("{}"));
+
+        svc.submitExternalTransfer("acc_1", "ext_acc", new BigDecimal("50.00"), "USD", "idem-key-1");
+
+        assertThat(captor.getValue().getHeaders().getFirst("Idempotency-Key"))
+                .isEqualTo("idem-key-1");
     }
+
 
     // ------------------------------------------------------------------ 5xx → PaymentProcessorException (part 2)
 
     @Test
     void submit_external_transfer_5xx_throws_payment_processor_exception() {
-        /*
-         * TODO (Chapter 06 Part 2 — Step 2): Verify that any 5xx response from the
-         * payment processor is wrapped in a PaymentProcessorException.
-         *
-         * Setup:
-         *   stub http.exchange("/payments", POST, any(), String.class) to throw
-         *   new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR)
-         *
-         * Verify:
-         *   assertThatThrownBy(() -> svc.submitExternalTransfer(...))
-         *       .isInstanceOf(PaymentProcessorException.class);
-         */
-        // TODO: implement this test
-        throw new UnsupportedOperationException("test not yet implemented");
+        when(http.exchange(eq("/payments"), eq(HttpMethod.POST), any(HttpEntity.class), eq(String.class)))
+                .thenThrow(new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR));
+
+        assertThatThrownBy(() ->
+                svc.submitExternalTransfer("acc_1", "ext_acc", new BigDecimal("50.00"), "USD", "idem-key-1"))
+                .isInstanceOf(PaymentProcessorException.class);
     }
 }
