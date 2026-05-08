@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.example.banking.service.PaymentServiceTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.353 s <<< FAILURE! -- in com.example.banking.service.PaymentServiceTest
+com.example.banking.service.PaymentServiceTest.submit_external_transfer_calls_processor_with_idempotency_header -- Time elapsed: 0.292 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.PaymentServiceTest.submit_external_transfer_calls_processor_with_idempotency_header(PaymentServiceTest.java:114)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.PaymentServiceTest.submit_external_transfer_5xx_throws_payment_processor_exception -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.PaymentServiceTest.submit_external_transfer_5xx_throws_payment_processor_exception(PaymentServiceTest.java:134)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

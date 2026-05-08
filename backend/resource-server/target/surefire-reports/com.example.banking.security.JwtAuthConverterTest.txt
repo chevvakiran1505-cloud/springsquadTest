@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Test set: com.example.banking.security.JwtAuthConverterTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.417 s <<< FAILURE! -- in com.example.banking.security.JwtAuthConverterTest
+com.example.banking.security.JwtAuthConverterTest.first_login_creates_bank_user_row_with_role_from_claim -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.security.JwtAuthConverterTest.first_login_creates_bank_user_row_with_role_from_claim(JwtAuthConverterTest.java:55)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.security.JwtAuthConverterTest.missing_email_claim_synthesizes_email_from_subject -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: JwtAuthConverter.convert(): not yet implemented
+	at com.example.banking.security.JwtAuthConverter.convert(JwtAuthConverter.java:71)
+	at com.example.banking.security.JwtAuthConverterTest.missing_email_claim_synthesizes_email_from_subject(JwtAuthConverterTest.java:124)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.security.JwtAuthConverterTest.subsequent_login_reuses_existing_row_and_role -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.security.JwtAuthConverterTest.subsequent_login_reuses_existing_row_and_role(JwtAuthConverterTest.java:78)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.security.JwtAuthConverterTest.admin_role_claim_maps_to_role_admin_authority -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: JwtAuthConverter.convert(): not yet implemented
+	at com.example.banking.security.JwtAuthConverter.convert(JwtAuthConverter.java:71)
+	at com.example.banking.security.JwtAuthConverterTest.admin_role_claim_maps_to_role_admin_authority(JwtAuthConverterTest.java:89)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.security.JwtAuthConverterTest.customer_role_claim_maps_to_role_customer_authority -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: JwtAuthConverter.convert(): not yet implemented
+	at com.example.banking.security.JwtAuthConverter.convert(JwtAuthConverter.java:71)
+	at com.example.banking.security.JwtAuthConverterTest.customer_role_claim_maps_to_role_customer_authority(JwtAuthConverterTest.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.security.JwtAuthConverterTest.principal_name_is_local_user_id_not_jwt_sub -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: JwtAuthConverter.convert(): not yet implemented
+	at com.example.banking.security.JwtAuthConverter.convert(JwtAuthConverter.java:71)
+	at com.example.banking.security.JwtAuthConverterTest.principal_name_is_local_user_id_not_jwt_sub(JwtAuthConverterTest.java:139)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Test set: com.example.banking.service.TransactionServiceTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.386 s <<< FAILURE! -- in com.example.banking.service.TransactionServiceTest
+com.example.banking.service.TransactionServiceTest.withdrawal_below_balance_throws_insufficient_funds_and_does_not_debit -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.TransactionServiceTest.withdrawal_below_balance_throws_insufficient_funds_and_does_not_debit(TransactionServiceTest.java:102)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.TransactionServiceTest.internal_transfer_creates_two_rows_with_same_transfer_group_id -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.TransactionServiceTest.internal_transfer_creates_two_rows_with_same_transfer_group_id(TransactionServiceTest.java:149)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.TransactionServiceTest.deposit_credits_balance_and_returns_completed_row -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.TransactionServiceTest.deposit_credits_balance_and_returns_completed_row(TransactionServiceTest.java:69)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.TransactionServiceTest.withdrawal_within_balance_succeeds_and_debits -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.TransactionServiceTest.withdrawal_within_balance_succeeds_and_debits(TransactionServiceTest.java:84)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.TransactionServiceTest.external_transfer_success_completes_and_debits -- Time elapsed: 0.017 s <<< ERROR!
+java.lang.UnsupportedOperationException: applyTransferOut: not yet implemented
+	at com.example.banking.service.TransactionService.applyTransferOut(TransactionService.java:191)
+	at com.example.banking.service.TransactionService.submit(TransactionService.java:87)
+	at com.example.banking.service.TransactionServiceTest.external_transfer_success_completes_and_debits(TransactionServiceTest.java:164)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.example.banking.service.TransactionServiceTest.external_transfer_failure_persists_failed_row_rethrows_and_does_not_debit -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: test not yet implemented
+	at com.example.banking.service.TransactionServiceTest.external_transfer_failure_persists_failed_row_rethrows_and_does_not_debit(TransactionServiceTest.java:196)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
