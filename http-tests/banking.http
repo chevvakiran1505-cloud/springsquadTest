@@ -1,0 +1,62 @@
+# IntelliJ HTTP Client / VS Code REST Client file.
+#
+# Sign in to the SPA at http://localhost:5173, open DevTools → Application →
+# Session Storage, copy the access_token from the oidc.user:* entry, and paste
+# it below. Tokens last ~1 hour.
+GET http://localhost:9000/.well-known/openid-configuration
+
+@host = http://localhost:8080
+@token = 9gF5DqsEvzQ2oLy2P8X1dZUr0_P5q2gR3kGcohWyIG-Sz7FTF77IRIeZv8ZtNeF4RoN-bpBwB3odxfSKWj6YD9N2SRLNsnWmIjZAyzWebFTMhzaFhWi9KhcJNO3YPpn3Lpmmum8G_rq8oIfpf1ivre9p6gb47s-dQOu_XkXcDJoMIa7-RIidFcU_hRTGKE4MnDMCcU-IWzfgjXUiWtwx6r-7mEpd39yUt1q8sjvSQdh46BjjpJmLG6hKrkJ36TnFkb2R0g3oPMuSAEt1odvQkeX_HN0ExpHJmqXG0szJmItBWWo4BRAaX2aQPxDa0xToSseJs9g_mzLz9ecT0OhdFQ
+
+### health (public)
+GET {{host}}/health
+
+### no token — expect 401
+GET {{host}}/api/v1/accounts
+
+### my user (creates row on first login)
+GET {{host}}/api/v1/users/me
+Authorization: Bearer {{token}}
+
+### my accounts
+GET {{host}}/api/v1/accounts
+Authorization: Bearer {{9gF5DqsEvzQ2oLy2P8X1dZUr0_P5q2gR3kGcohWyIG-Sz7FTF77IRIeZv8ZtNeF4RoN-bpBwB3odxfSKWj6YD9N2SRLNsnWmIjZAyzWebFTMhzaFhWi9KhcJNO3YPpn3Lpmmum8G_rq8oIfpf1ivre9p6gb47s-dQOu_XkXcDJoMIa7-RIidFcU_hRTGKE4MnDMCcU-IWzfgjXUiWtwx6r-7mEpd39yUt1q8sjvSQdh46BjjpJmLG6hKrkJ36TnFkb2R0g3oPMuSAEt1odvQkeX_HN0ExpHJmqXG0szJmItBWWo4BRAaX2aQPxDa0xToSseJs9g_mzLz9ecT0OhdFQ}}
+
+### one account (replace acc_xxx with a real ID from the previous response)
+GET {{host}}/api/v1/accounts/acc_xxx
+Authorization: Bearer {{token}}
+
+### transactions for an account
+GET {{host}}/api/v1/accounts/acc_xxx/transactions
+Authorization: Bearer {{token}}
+
+### deposit
+POST {{host}}/api/v1/transactions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "accountId": "acc_xxx",
+  "type": "DEPOSIT",
+  "amount": 100.00,
+  "description": "test deposit"
+}
+
+### withdrawal — overdraw to see 422 INSUFFICIENT_FUNDS
+POST {{host}}/api/v1/transactions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "accountId": "acc_xxx",
+  "type": "WITHDRAWAL",
+  "amount": 999999999.00
+}
+
+### admin only — should be 403 unless your role is ADMIN
+GET {{host}}/api/v1/admin/users
+Authorization: Bearer {{token}}
+
+### authorization probe — someone else's account, expect 404
+GET {{host}}/api/v1/accounts/acc_someone_elses
+Authorization: Bearer {{token}}
